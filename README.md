@@ -18,5 +18,6 @@
 5. Cables (optional)
 6. Breadboard (optional)
 
-<h1>Hardware Connection</h1>
+<h1>Media Files</h1>
 
+[See the system J'arrive working on an arduino](https://youtu.be/F1wHzmf45iw)
