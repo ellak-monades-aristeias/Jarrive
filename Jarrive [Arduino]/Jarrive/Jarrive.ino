@@ -1,8 +1,5 @@
 #include <SoftwareSerial.h>
 
-//Set the serial of Arduino for debugging
-//SoftwareSerial ardSerial(1, 2); // RX = Digital Pin 1, TX = Digital Pin 2
-
 // Set the serial for Bluetooth Communication
 SoftwareSerial btSerial(2, 3); // RX = Digital Pin 3, TX = Digital Pin 4
 
