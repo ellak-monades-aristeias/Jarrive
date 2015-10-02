@@ -20,6 +20,31 @@
 
 <h1>Hardware Connection</h1>
 
+Follow the steps below to connect the "J'arrive" system. Advice the picture for detailed information.
+
+<h5>Bluetooth module HM-10 -> Arduino</h5>
+1. Pin1(TX) -> Digital Pin2
+2. Pin2(RX) -> Digital Pin3
+3. Pin12(3.3V) -> 3.3V Pin
+4. Pin13(GND) -> GND Pin
+
+<h5>AC Relay -> Arduino</h5>
+1. GND Pin(-) -> GND Pin
+2. VCC Pin(+) -> 5V Pin
+3. Signal Pin(S) -> Digital Pin8
+
+<h5>Velleman K8064 DC Controlled Dimmer -> Arduino</h5>
+1. Analog Input Pin(-) -> GND Pin
+2. Analog Input Pin(+) -> Digital Pin9  *must be a PWM Pin
+
+<h5>Final Connections</h5>
+1. Power Supply -> Arduino Board    *recommended a 9V-12V 1A Power Supply
+2. Clima -> Terminal Block (NO) of the AC Relay
+3. Light -> Terminal Block (Load) of Velleman K8064
+4. AC Power -> Terminal Block (AC Power) of Velleman K8064
+
+
+
 
 ![alt tag](https://github.com/ellak-monades-aristeias/Jarrive/blob/master/HarwareConnection.png)
 
