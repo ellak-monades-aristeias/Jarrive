@@ -18,6 +18,12 @@
 5. Cables (optional)
 6. Breadboard (optional)
 
+<h1>Hardware Connection</h1>
+
+
+![alt tag](https://github.com/ellak-monades-aristeias/Jarrive/blob/master/HarwareConnection.png)
+
+
 <h1>Media Files</h1>
 
 [See the system J'arrive working on an arduino](https://youtu.be/F1wHzmf45iw)
