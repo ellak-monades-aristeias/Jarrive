@@ -15,7 +15,7 @@
 2. Bluetooth module HM-10
 3. 220V AC Relay 5V for Arduino
 4. [Velleman K8064 DC Controlled Dimmer](http://www.velleman.eu/downloads/0/illustrated/illustrated_assembly_manual_k8064.pdf)
-5. Cables (optional)
+5. Jumper Cables
 6. Breadboard (optional)
 
 <h1>Hardware Connection</h1>
