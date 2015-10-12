@@ -28,11 +28,13 @@ void setup()
 
   // Setup the bluetooth module
   btSerial.print("AT\r\n");
-  delay(500);
+  delay(200);
+  btSerial.print("AT+PWRM1\r\n");
+  delay(200);
   btSerial.print("AT+NAMEJarrive\r\n");
-  delay(500);
+  delay(200);
   btSerial.print("AT+PIN000000\r\n");
-  delay(500);
+  delay(200);
 
   Serial.println("SETUP OK");
 }
@@ -40,25 +42,29 @@ void setup()
 void loop()
 {
 
+   while (btSerial.available() > 0) {
 
-  while (btSerial.available() > 0) {
-
+    Serial.println("loop IN");
     // look for the next valid integer in the incoming serial stream:
     relayData = btSerial.parseInt();
     // do it again:
     dimmerData = btSerial.parseInt();
 
+
+
+
     // Look for the end of line
-    if (btSerial.read() == '\n')
+    if (btSerial.read() == 0x0A)
     {
-      // constrain the values to 0 - 255
-      relayData = constrain(relayData, 0, 255);
-      dimmerData =  constrain(dimmerData, 0, 255);
+      Serial.println("NewLine");
+      // constrain the values to 0 - 4
+      relayData = constrain(relayData, 0, 4);
+      dimmerData =  constrain(dimmerData, 0, 4);
 
       delayFlag = true; // raise the flag to change the relay status
       delayValue = 0;
 
-      analogWrite(dimmerPin, dimmerData); // Write the dimmer value
+      analogWrite(dimmerPin, (dimmerData * 63)); // Write the dimmer value
 
       // For debugging
       Serial.print(relayData);
@@ -72,12 +78,12 @@ void loop()
   // If relay data changed start the delay sequence
   if ( delayFlag == true ) {
     delayValue = delayValue + 1;
-    Serial.println(delayValue); // For debugging
+    //Serial.println(delayValue); // For debugging
   }
 
   // Write the values
-  if ( delayValue == 1000 ) { //delay in tenths of seconds 1000 -> 10 sec
-    if ( relayData == 255 ) {
+  if ( delayValue == 1000 ) { //delay in miliseconds 1000 -> 1 sec
+    if ( relayData > 3 ) {
       digitalWrite(relayPin, HIGH);
     }
     else    {
@@ -86,23 +92,25 @@ void loop()
     delayFlag = false;
   }
 
-  delay(10);
-  
-  // Get all answers to Arduino Serial [for debugging]
-  if (btSerial.available())
-  {
-    Serial.write(btSerial.read());
-  }//if
-  
+  delay(1);
 
-  /*
+ /* 
+   // Get all answers to Arduino Serial [for debugging]
+   if (btSerial.available())
+   {
+     Serial.write(btSerial.read());
+   }//if
+  */
+
+/*
     //Use this to be able to send AT Commands to the module through Serial Monitor
     if (Serial.available())
     {
       btSerial.write(Serial.read());
     }//if
-  */
+*/
 }
+
 
 
 
