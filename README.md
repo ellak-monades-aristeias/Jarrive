@@ -1,8 +1,8 @@
 <h1>“J’arrive” System</h1>
 
-With the Jarrive system the user makes his office into 'Smart Office', by controlling the Lighting and the aircoditioning through bluetooth technology.
+With the Jarrive system the user makes his office into 'Smart Office', by controlling the Lighting and the air-conditioning through bluetooth technology.
 
-The user installs on his smartphone the Jarrive application and connects the Jarrive system to the Lighting and the aircodition. Whenever he arrives to his office (get in the range of bluetooth) the Jarrive system open the lights (bby dimming effect) and after a while starts the aircoditioning. When the users decide to leave the opposite happens. The lights close (by dimming effect) and after a while the aircoditiongs closes too.
+The user installs on his smartphone the Jarrive application and connects the Jarrive system to the Lighting and the air-conditioning. Whenever he arrives to his office (get in the range of bluetooth) the Jarrive system opens the lights (by dimming effect) and after a while starts the air-conditioning. When the users decide to leave the opposite happens. The lights close (by dimming effect) and after a while the air-conditioning closes too.
 
 The user has to just have his smartphone with the Jarrive application on him!
 
