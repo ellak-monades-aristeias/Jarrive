@@ -6,13 +6,10 @@ SoftwareSerial btSerial(2, 3); // RX = Digital Pin 3, TX = Digital Pin 4
 // Set the digital pin for controling the 220V Relay
 int relayPin = 8;
 int dimmerPin = 9;
-
-int relayData = 0;
+boolean dataFlag = false;
 int dimmerData = 0;
-
-int delayValue = 0;
-boolean delayFlag = false;
-
+boolean incrFlag = true;
+int WDT = 50;
 
 void setup()
 {
@@ -27,89 +24,104 @@ void setup()
   btSerial.begin(9600);
 
   // Setup the bluetooth module
-  btSerial.print("AT\r\n");
-  delay(200);
+  //btSerial.print("AT\r\n");
+  //delay(200);
   btSerial.print("AT+PWRM1\r\n");
   delay(200);
   btSerial.print("AT+NAMEJarrive\r\n");
   delay(200);
-  btSerial.print("AT+PIN000000\r\n");
-  delay(200);
+  //btSerial.print("AT+PIN000000\r\n");
+  //delay(200);
+
+//AT+RESET
 
   Serial.println("SETUP OK");
 }
 
 void loop()
 {
+  
+  //Set a watchdog timer for the bluetooth
+  if (WDT < 0) {
+    btSerial.print("AT+RESET\r\n");
+    delay(400);
+    WDT = 50;
+  }
+  
+  Serial.println("loop IN");
 
-   while (btSerial.available() > 0) {
+  if (dataFlag == false) {
+    //write to the bluetooth device to get an answer
+    btSerial.print(0x30);
+    Serial.println("Write data");
+    delay(100);
 
-    Serial.println("loop IN");
-    // look for the next valid integer in the incoming serial stream:
-    relayData = btSerial.parseInt();
-    // do it again:
-    dimmerData = btSerial.parseInt();
+    if (btSerial.available()) {
+      //got a response from the device
+      byte btData = btSerial.read();
+      Serial.println(btData);
+      WDT = 50;
+
+      //if all ok raise the flag
+      if (btData == 227) {
+        dataFlag = true;
+        incrFlag = true;
+        Serial.println("Flag Raised");
+      }
+      else {
+        Serial.println("No Data1");
+        dataFlag = false;
+        incrFlag = false;
+      }
+    } //if
+      else {
+        Serial.println("No Data2");
+        dataFlag = true;
+        incrFlag = false;
+        WDT = WDT -1; //Decrease the watchdog timer
+      }
+  }// if
 
 
-
-
-    // Look for the end of line
-    if (btSerial.read() == 0x0A)
-    {
-      Serial.println("NewLine");
-      // constrain the values to 0 - 4
-      relayData = constrain(relayData, 0, 4);
-      dimmerData =  constrain(dimmerData, 0, 4);
-
-      delayFlag = true; // raise the flag to change the relay status
-      delayValue = 0;
-
-      analogWrite(dimmerPin, (dimmerData * 63)); // Write the dimmer value
-
-      // For debugging
-      Serial.print(relayData);
-      Serial.print(" - ");
+  if (dataFlag) {
+ Serial.println(dimmerData);
+    while (dimmerData >= 0 && dimmerData <= 255) {
       Serial.println(dimmerData);
+      analogWrite(dimmerPin, dimmerData); // Write the dimmer value
+      delay(100);
+      if (incrFlag) {
+        dimmerData = dimmerData + 1;
+      }
+      else {
+        dimmerData = dimmerData - 1;
+      }//if
+     
+    }//while
 
-    }
-
-  }
-
-  // If relay data changed start the delay sequence
-  if ( delayFlag == true ) {
-    delayValue = delayValue + 1;
-    //Serial.println(delayValue); // For debugging
-  }
-
-  // Write the values
-  if ( delayValue == 1000 ) { //delay in miliseconds 1000 -> 1 sec
-    if ( relayData > 3 ) {
+    if (dimmerData >= 255) {
+      delay(1000);
       digitalWrite(relayPin, HIGH);
+      //incrFlag = false;
+      dimmerData = 255;
+      dataFlag = false;
+      Serial.println("DigiHigh");
     }
-    else    {
+    if (dimmerData <= 0) {
+      delay(1000);
       digitalWrite(relayPin, LOW);
-    }
-    delayFlag = false;
-  }
-
-  delay(1);
-
- /* 
-   // Get all answers to Arduino Serial [for debugging]
-   if (btSerial.available())
-   {
-     Serial.write(btSerial.read());
-   }//if
-  */
-
-/*
-    //Use this to be able to send AT Commands to the module through Serial Monitor
-    if (Serial.available())
-    {
-      btSerial.write(Serial.read());
+      //incrFlag = true;
+      dimmerData = 0;
+      dataFlag = false;
+      Serial.println("DigiLow");
     }//if
-*/
-}
+  }//if
+
+  
+delay(100);
+} //loop
+
+
+
 
 
 

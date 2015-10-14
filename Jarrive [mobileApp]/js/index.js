@@ -8,6 +8,14 @@ var servUUID_short = "FFE0";
 var charUUID_short = "FFE1";
 var devRSSI = "";
 
+// ASCII only
+function bytesToString(buffer) {
+    return String.fromCharCode.apply(null, new Uint8Array(buffer));
+}
+
+function errorMessage(msg) {
+    console.log(msg);
+}
 
 var app = {
     initialize: function () {
@@ -36,6 +44,7 @@ var app = {
                     'RSSI: ' + device.rssi + '&nbsp;|&nbsp;' +
                     device.id;
             devRSSI = device.rssi;
+            devMAC = device.id;
             listItem.dataset.deviceId = device.id;  // TODO
             listItem.innerHTML = html;
             deviceList.appendChild(listItem);
@@ -45,35 +54,23 @@ var app = {
     connect: function (e) {
         var deviceId = e.target.dataset.deviceId,
             onConnect = function () {
-
-                //ble.startNotification(deviceId, button.service, button.data, app.onButtonData, app.onError);
                 // subscribing for incoming data
-                //ble.startNotification(deviceId, accelerometer.service, accelerometer.data, app.onAccelerometerData, app.onError);
-                // turn accelerometer on
-                var myData = 0;
-                devRSSI = 0 - devRSSI;
-                if (devRSSI > 100) { myData = 48; }
-                if (devRSSI > 90 && devRSSI <= 100) { myData = 49; }
-                if (devRSSI > 80 && devRSSI <= 90) { myData = 50; }
-                if (devRSSI > 70 && devRSSI <= 80) { myData = 51; }
-                if (devRSSI <= 70) { myData = 52; }
-                var configData = new Uint8Array(4);
-                configData[0] = myData;
-                configData[1] = 44;
-                configData[2] = myData;
-                configData[3] = 10;
-
-
-                ble.write(deviceId, servUUID, charUUID, configData.buffer,function () { console.log("Send Data"); }, app.onError);
-                disconnectButton.dataset.deviceId = deviceId;
+                ble.startNotification(devMAC, servUUID, charUUID, app.onData,errorMessage("Notification Error"));
                 app.showDetailPage();
             };
 
-        ble.connect(deviceId, onConnect, app.onError);
+        ble.connect(devMAC, onConnect, errorMessage("Connection Error"));
+    },
+    onData: function (data) { // data received from Arduino
+        console.log("Received: " + bytesToString(data) + "<br/>");
+        if (bytesToString(data) == 48) {
+            ble.write(devMAC, servUUID, charUUID, 0x31, function () { console.log("Send Data"); }, errorMessage("Data NOT Send"));
+        }
+
     },
     disconnect: function (event) {
         var deviceId = event.target.dataset.deviceId;
-        ble.disconnect(deviceId, app.showMainPage, app.onError);
+        ble.disconnect(devMAC, app.showMainPage, errorMessage("Disconnect Error"));
     },
     showMainPage: function () {
         mainPage.hidden = false;
