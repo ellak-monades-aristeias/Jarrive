@@ -5,6 +5,7 @@ This app scan for bluetooth Jarrive system and list the device. By clicking on t
 The Application was developed with javascript and HTML technologies
 
 Steps for handling the code. Refer to this [link](https://www.visualstudio.com/en-us/features/mobile-app-development-vs.aspx) for further information.
+
 1. Install the Visual Studio .NET 2015 (express edition)
 2. Install the Cross Platform Mobile Development
 3. Create a solution for cordova application
