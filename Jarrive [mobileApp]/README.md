@@ -10,6 +10,7 @@ Steps for handling the code. Refer to this [link](https://www.visualstudio.com/e
 3. Create a solution for cordova application
 4. Copy the  filed provided to the www folder in the solution path.
 
+
 <h2>for Android Devices</h2>
 Connect the android device and deploy
 
