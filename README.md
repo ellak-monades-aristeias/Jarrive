@@ -25,7 +25,7 @@ There can be found detailed instruction for [developers](https://github.com/ella
 
 [See the system J'arrive working on an arduino](https://youtu.be/F1wHzmf45iw)
 
-<h3>Deliverables<h3>
+<h3>Deliverables</h3>
 | Deliverables                  |
 | ------------- |:-------------:|
 | Code for Arduino          | [deliverable 1] |
