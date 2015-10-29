@@ -16,6 +16,6 @@ Steps for handling the code. Refer to this [link](https://www.visualstudio.com/e
 <h2>for Android Devices</h2>
 Connect the android device and deploy
 
-<h2>for iOS Devices</h1>
+<h2>for iOS Devices</h2>
 Use the guide [here](http://blogs.msdn.com/b/visualstudio/archive/2014/12/04/ios-build-amp-debugging-with-the-visual-studio-tools-for-apache-cordova.aspx) to deploy the project for iOS devices
 
