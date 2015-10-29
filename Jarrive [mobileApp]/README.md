@@ -7,10 +7,10 @@ The Application was developed with javascript and HTML technologies
 Steps for handling the code. Refer to this [link](https://www.visualstudio.com/en-us/features/mobile-app-development-vs.aspx) for further information.
 
 1. Install the Visual Studio .NET 2015 (express edition)
-2. Install this [plugin](https://github.com/don/cordova-plugin-ble-central)
-3. Install the Cross Platform Mobile Development
-4. Create a solution for cordova application
-5. Copy the  filed provided to the www folder in the solution path.
+2. Install the Cross Platform Mobile Development
+3. Create a solution for cordova application
+4. Install this [plugin](https://github.com/don/cordova-plugin-ble-central)
+5. Copy the filed provided to the www folder in the solution path.
 
 
 <h2>for Android Devices</h2>
