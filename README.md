@@ -27,7 +27,7 @@ There can be found detailed instruction for [developers](https://github.com/ella
 
 <h3>Deliverables</h3>
 | Deliverables  |
-| -------------:|
+| :-------------: |
 | [Code for Arduino](https://github.com/ellak-monades-aristeias/Jarrive/tree/master/Jarrive %5BArduino%5D/Jarrive) |
 | [Code for iOS devices](https://github.com/ellak-monades-aristeias/Jarrive/tree/master/Jarrive %5BmobileApp%5D) |
 | [Code for Arduino devices](https://github.com/ellak-monades-aristeias/Jarrive/tree/master/Jarrive %5BmobileApp%5D) |
