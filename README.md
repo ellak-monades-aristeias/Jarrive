@@ -24,3 +24,10 @@ There can be found detailed instruction for [developers](https://github.com/ella
 <h1>Social Media</h1>
 
 [See the system J'arrive working on an arduino](https://youtu.be/F1wHzmf45iw)
+
+<h3>Deliverables<h3>
+| Deliverables                  |
+| ------------- |:-------------:|
+| Code for Arduino          | [deliverable 1] |
+| Code for iOS devices      | [deliverable 1] |
+| Code for Arduino devices  | [deliverable 1] |
