@@ -88,7 +88,7 @@ void loop()
     while (dimmerData >= 0 && dimmerData <= 255) {
       Serial.println(dimmerData);
       analogWrite(dimmerPin, dimmerData); // Write the dimmer value
-      delay(100);
+      delay(50);
       if (incrFlag) {
         dimmerData = dimmerData + 1;
       }
@@ -99,7 +99,7 @@ void loop()
     }//while
 
     if (dimmerData >= 255) {
-      delay(1000);
+      delay(3000);
       digitalWrite(relayPin, HIGH);
       //incrFlag = false;
       dimmerData = 255;
@@ -107,7 +107,7 @@ void loop()
       Serial.println("DigiHigh");
     }
     if (dimmerData <= 0) {
-      delay(1000);
+      delay(3000);
       digitalWrite(relayPin, LOW);
       //incrFlag = true;
       dimmerData = 0;
