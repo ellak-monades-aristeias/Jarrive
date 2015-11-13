@@ -10,13 +10,13 @@ The user has to just have his smartphone with the Jarrive application on him!
 
 <h1>Hardware Requirements</h1>
 
-1. Arduino UNO
+1. [Arduino UNO](http://www.devobox.com/index.php?id_product=1&controller=product&id_lang=1)
 2. Bluetooth module HM-10
 3. 220V AC Relay 5V for Arduino
 4. [Velleman K8064 DC Controlled Dimmer](http://www.velleman.eu/downloads/0/illustrated/illustrated_assembly_manual_k8064.pdf)
-5. Jumper Cables
-6. Power Supply for Arduino
-7. Breadboard (optional)
+5. [Jumper Cables](http://www.devobox.com/index.php?id_product=4&controller=product&id_lang=1)
+6. [Power Supply for Arduino](http://www.devobox.com/index.php?id_product=7&controller=product&id_lang=1)
+7. [Breadboard](http://www.devobox.com/index.php?id_product=17&controller=product&id_lang=1) (optional)
 
 <h1>Instructions</h1>
 There can be found detailed instruction for [developers](https://github.com/ellak-monades-aristeias/Jarrive/wiki/Developer-Guide) or [end users](https://github.com/ellak-monades-aristeias/Jarrive/wiki/End-user-guide) in our [Wiki](https://github.com/ellak-monades-aristeias/Jarrive/wiki) section
