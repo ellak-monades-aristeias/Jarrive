@@ -33,3 +33,12 @@ There can be found detailed instruction for [developers](https://github.com/ella
 | [Code for iOS devices](https://github.com/ellak-monades-aristeias/Jarrive/tree/master/Jarrive %5BmobileApp%5D) |
 | [Code for Arduino devices](https://github.com/ellak-monades-aristeias/Jarrive/tree/master/Jarrive %5BmobileApp%5D) |
 | [Wiki - Instructions](https://github.com/ellak-monades-aristeias/Jarrive/wiki) |
+
+
+## Σε ποίους απευθύνεται - Κοινότητες Χρηστών - Προγραμματιστών(Developers) ##
+...εδώ περιγράφετε τους δυνητικούς τελικούς χρήστες του έργου σας και τις κοινότητες χρηστών/developers που θα ενδιαφερόντουσαν να επεκτείνουν το έργο σας. ...
+
+## Κόστος ##
+ ... το επιπλέον κόστος για την χρήση του έργου σας, εάν απαιτείται επιπλέον εξοπλισμός η/και κατασκευή το κόστος ανα μονάδα για 1, 10 ή 100. ...
+
+
