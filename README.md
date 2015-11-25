@@ -61,5 +61,3 @@ There can be found detailed instruction for [developers](https://github.com/ella
 - 10 x (Συνολική λίστα υλικών για σύστημα Jarrive) -> ~70ευρώ/τεμάχιο
 - 100 x (Συνολική λίστα υλικών για σύστημα Jarrive) -> ~67ευρώ/τεμάχιο
 
-
-
